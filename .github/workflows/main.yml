@@ -9,14 +9,17 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+
     steps:
     - uses: actions/checkout@v3
 
     - name: Setup PHP
       uses: shivammathur/setup-php@v2
       with:
-        php-version: '8.1'
+        php-version: '8.2'
+
+    - name: Start PHP Server
+      run: php -S localhost:8000 -t webb/ &
 
     - name: Run Tests
-      run: php test_all.php
-
+      run: php tests/test_all.php
